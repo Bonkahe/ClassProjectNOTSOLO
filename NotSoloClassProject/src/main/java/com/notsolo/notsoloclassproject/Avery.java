@@ -1,7 +1,10 @@
 
 package com.notsolo.notsoloclassproject;
 
-
-public class NewClass {
+/**
+ *
+ * @author Avery
+ */
+public class Avery {
     
 }
