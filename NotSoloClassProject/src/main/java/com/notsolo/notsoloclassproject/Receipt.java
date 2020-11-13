@@ -7,8 +7,8 @@ package com.notsolo.notsoloclassproject;
 
 /**
  *
- * @author Sword
+ * @author Bonkahe
  */
-public class DerekClass {
+public class Receipt {
     
 }

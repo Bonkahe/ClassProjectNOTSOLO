@@ -7,8 +7,8 @@ package com.notsolo.notsoloclassproject;
 
 /**
  *
- * @author Amanda
+ * @author Bonkahe
  */
-public class AmandaClass {
+public class CustomerMenuHandler {
     
 }

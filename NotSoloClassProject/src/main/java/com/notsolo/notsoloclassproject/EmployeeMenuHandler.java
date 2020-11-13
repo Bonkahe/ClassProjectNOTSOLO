@@ -7,8 +7,17 @@ package com.notsolo.notsoloclassproject;
 
 /**
  *
- * @author bonka
+ * @author Bonkahe
  */
-public class Bonkahe {
+public class EmployeeMenuHandler {
+    
+    /*
+    public void RunTest()
+    {
+        DatabaseManager currentInstance = DatabaseManager.getInstance();
+        System.out.println(currentInstance.teststring);
+    }
+    */
+    
     
 }
