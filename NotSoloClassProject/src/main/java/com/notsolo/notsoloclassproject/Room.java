@@ -12,12 +12,28 @@ package com.notsolo.notsoloclassproject;
 public class Room {
     
     
+    
     public Receipt GetReciept()
     {
         return new Receipt();
     }
     
     public void ClearRoom()
+    {
+        
+    }
+    
+    public void GetCurrentOrders()
+    {
+        
+    }
+    
+    public void AddOrder()
+    {
+        
+    }
+    
+    public void CompleteOrder()
     {
         
     }

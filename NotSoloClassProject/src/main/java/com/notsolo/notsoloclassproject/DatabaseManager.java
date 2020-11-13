@@ -16,12 +16,25 @@ public class DatabaseManager {
 
    private List<Room> currentRooms;
    
+   private List<Item> currentMenu;
+   
+   
+   public void InitializeDatabase()
+   {
+       
+   }
    
    /**
     * Should get the list of current rooms.
     * @return List current room list.
     */
    public List<Room> GetRooms(){ return currentRooms; }
+   
+   /**
+    * Gets list of current Menu Items.
+    * @return List returns current menu.
+    */
+   public List<Item> GetMenu(){ return currentMenu; }
    
    /**
     * Gets the current bill for a given room.
@@ -43,6 +56,7 @@ public class DatabaseManager {
     * Will Fill the room with the users data.
     */
    public void MakeRoomFilled(){}
+   
    
    
    private DatabaseManager() { }
