@@ -5,13 +5,19 @@
  */
 package com.notsolo.notsoloclassproject;
 
+import java.util.List;
+import java.io.Serializable;
+
 /**
  *
  * @author Bonkahe
  */
-public class Room {
+public class Room implements Serializable {
     
+    //default serialVersion id
+    private static final long serialVersionUID = 1L;
     
+    public List<Order> orders;
     
     public Receipt GetReciept()
     {

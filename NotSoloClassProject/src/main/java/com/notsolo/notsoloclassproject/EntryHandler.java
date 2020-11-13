@@ -7,7 +7,7 @@ package com.notsolo.notsoloclassproject;
 
 /**
  *
- * @author NotSolo Team, (Team 2)
+ * @author Bonkahe
  */
 public class EntryHandler {
     

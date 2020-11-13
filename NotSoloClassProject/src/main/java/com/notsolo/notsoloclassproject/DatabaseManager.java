@@ -18,8 +18,20 @@ public class DatabaseManager {
    
    private List<Item> currentMenu;
    
-   
+   /**
+    * Will allow the user to input options to create the database objects.
+    */
    public void InitializeDatabase()
+   {
+       
+   }
+   
+   private void CreateMenu()
+   {
+       
+   }
+   
+   private void FillRooms()
    {
        
    }
