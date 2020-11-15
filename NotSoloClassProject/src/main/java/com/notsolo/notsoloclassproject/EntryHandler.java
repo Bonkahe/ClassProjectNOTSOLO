@@ -55,7 +55,46 @@ public class EntryHandler {
     
     private static void CustomerCheckin()
     {
+        Scanner scanner = new Scanner(System.in);
+        DatabaseManager currentInstance = DatabaseManager.getInstance();
+        System.out.println("Please input your reservation name:");
+        String input = scanner.nextLine();
+        String reservationName = input;
         
+        int roomId = currentInstance.GetReservedRoom(input);
+        
+        if(roomId == -1)
+        {
+            System.out.println("No reservation, would you like to enter an empty room?");
+            do {
+                input = scanner.nextLine();
+            } while(!"yes".equals(input.toLowerCase()) || !"y".equals(input.toLowerCase()) || !"no".equals(input.toLowerCase()) || !"n".equals(input.toLowerCase()) );
+            
+            if (input.toLowerCase().equals("yes") || input.toLowerCase().equals("y"))
+            {
+                CreateNewReservation(reservationName);
+            }
+        }
+        else
+        {
+            CustomerMenuHandler returnCustomer = new CustomerMenuHandler(roomId);
+            returnCustomer.InRoute();
+        }
+    }
+    
+    private static void CreateNewReservation(String reservationName)
+    {
+        DatabaseManager currentInstance = DatabaseManager.getInstance();
+        Room[] rooms = currentInstance.GetRooms();
+        for (int i = 0; i < rooms.length; i++)
+        {
+            if (!rooms[i].occupied)
+            {
+                CustomerMenuHandler returnCustomer = new CustomerMenuHandler(i);
+                currentInstance.FillRoom(i, reservationName);
+                returnCustomer.InRoute();
+            }
+        }
     }
     
     private static void EmployeeLogin()

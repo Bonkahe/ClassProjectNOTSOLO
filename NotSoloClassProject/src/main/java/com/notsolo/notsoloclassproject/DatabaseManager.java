@@ -74,15 +74,18 @@ public class DatabaseManager {
     /**
      * Get first room listed with given reservation name.
      * @param reservationName name to search for.
-     * @return int room id of found room, 0 if not found.
+     * @return int room id of found room, -1 if not found.
      */
     public int GetReservedRoom(String reservationName)
     {
         for (int i = 0; i < currentData.currentRooms.length; i++)
         {
-            if (currentData.currentRooms[i].reservationName.equals(reservationName)){ return i;}
+            if (currentData.currentRooms[i].reservationName.equals(reservationName))
+            { 
+                return i;
+            }
         }        
-        return 0;
+        return -1;
     }
 
     /**
@@ -109,6 +112,7 @@ public class DatabaseManager {
     { 
         Receipt curReceipt = currentData.currentRooms[roomId].GetReciept();
         currentData.currentRooms[roomId].ClearRoom(); 
+        SaveDatabase(currentData);
         return curReceipt;
     }
 
@@ -127,6 +131,29 @@ public class DatabaseManager {
             currentData.currentRooms[roomId].occupied = true;
             currentData.currentRooms[roomId].reservationName = reservationName;
         }
+        SaveDatabase(currentData);
+    }
+    
+    /**
+     * Adds an order to the given room.
+     * @param addedOrder specific order to add.
+     * @param roomId The room id to add an order.
+     */
+    public void AddOrder(Order addedOrder, int roomId)
+    {
+        currentData.currentRooms[roomId].AddOrder(addedOrder);
+        SaveDatabase(currentData);
+    }
+    
+    /**
+     * Adds an order to the given room.
+     * @param completedOrder order id to complete.
+     * @param roomId The room id to add an order.
+     */
+    public void CompleteOrder(int completedOrder, int roomId)
+    {
+        currentData.currentRooms[roomId].CompleteOrder(completedOrder);
+        SaveDatabase(currentData);
     }
    
     /**

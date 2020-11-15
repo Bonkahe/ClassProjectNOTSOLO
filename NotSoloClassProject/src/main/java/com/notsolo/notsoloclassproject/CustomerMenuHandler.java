@@ -10,5 +10,14 @@ package com.notsolo.notsoloclassproject;
  * @author Bonkahe
  */
 public class CustomerMenuHandler {
+    private int roomId;
+    public CustomerMenuHandler(int roomId)
+    {
+        this.roomId = roomId;
+    }
     
+    public void InRoute()
+    {
+        
+    }
 }
