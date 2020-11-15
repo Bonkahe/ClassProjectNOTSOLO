@@ -10,5 +10,5 @@ package com.notsolo.notsoloclassproject;
  * @author Bonkahe
  */
 public interface Item {
-    public void GetPrice();
+    public double GetPrice();
 }
