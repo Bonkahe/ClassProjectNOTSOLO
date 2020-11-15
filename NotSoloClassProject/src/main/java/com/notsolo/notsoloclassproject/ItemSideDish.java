@@ -25,7 +25,7 @@ public class ItemSideDish implements Item{
     
     @Override
     public String toString() { 
-        return ("Side:" + title + "\nDescription:" + description + "\nPrice per order: $" + price + "\nDish adds " + calories + " calories.");
+        return ("\nSide:" + title + "\nDescription:" + description + "\nPrice per order: $" + price + "\nDish adds " + calories + " calories.");
     } 
 
     @Override

@@ -23,6 +23,9 @@ public class DatabaseManager {
 
     private DataContainer currentData;
 
+    /**
+     * Checks if database file exists, if so loads it, if not initializes the process to create the database.
+     */
     public void CheckDatabaseIntegrity()
     {
         File tempFile = new File(curDirectoryPath);
@@ -41,7 +44,7 @@ public class DatabaseManager {
     /**
      * Will allow the user to input options to create the database objects.
      */
-    public void InitializeDatabase()
+    private void InitializeDatabase()
     {
         currentData = new DataContainer();
         Scanner scanner = new Scanner(System.in); 
@@ -102,7 +105,12 @@ public class DatabaseManager {
      * 
      * @param roomId The room id to be retrieved, to get a list of all current rooms use GetRooms() method.
      */
-    public void MakeRoomVacant(int roomId){ currentData.currentRooms[roomId].ClearRoom(); }
+    public Receipt LeaveRoom(int roomId)
+    { 
+        Receipt curReceipt = currentData.currentRooms[roomId].GetReciept();
+        currentData.currentRooms[roomId].ClearRoom(); 
+        return curReceipt;
+    }
 
     /**
      * Will Fill the room with the users data.
@@ -161,7 +169,18 @@ public class DatabaseManager {
      */
     private void CreateMenu()
     {
+        Item[] tempitems = new Item[]{
+            new ItemMainCourse("Salmon Filete", "A fresh salmon chop prepared on a bed of white rice.", 12.99, 1100),
+            new ItemMainCourse("Angus Burger", "Quarter pound of fresh angus beef with lettuce mayo and ketchup.", 9.99, 1500),
+            new ItemMainCourse("Grilled Chicken", "Chicken grilled to perfection, served with a bed of white rice.", 13.99, 1200),
+            new ItemSideDish("Mashed Potatoes", "American classic mashed potatoes, served with white gravy.", 2.99, 500),
+            new ItemSideDish("Green Beans", "A southern classic, in house snapped green beans.", 1.50, 120),
+            new ItemSideDish("Baked Potatoe", "A large Idaho potatoe, served with butter and condiments.", 2.50, 600),
+            new ItemSideDish("Baked Beans", "Sweet southern baked beans, with maple bacon.", 2.50, 500),
+            new ItemSideDish("Brussel Sprouts", "Sauteed in butter and lightly steamed. ", 2.99, 450)
+        };
         
+        currentData.currentMenu = tempitems;
     }
    
    

@@ -5,8 +5,7 @@
  */
 package com.notsolo.notsoloclassproject;
 
-import java.util.List;
-import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
@@ -16,30 +15,44 @@ public class Room {
     
     public boolean occupied;
     public String reservationName;
-    public List<Order> orders;
+    private ArrayList<Order> pendingOrders;
+    private ArrayList<Order> fullfilledOrders;
+
+    public Room() {
+        this.pendingOrders = new ArrayList<>();
+        this.fullfilledOrders = new ArrayList<>();
+    }
     
     public Receipt GetReciept()
     {
-        return new Receipt();
+        return new Receipt(reservationName, fullfilledOrders);
     }
     
     public void ClearRoom()
     {
-        
+        reservationName = "";
+        pendingOrders.clear();
+        fullfilledOrders.clear();
     }
     
-    public void GetCurrentOrders()
+    public ArrayList<Order> GetCurrentOrders()
     {
-        
+        return pendingOrders;
     }
     
-    public void AddOrder()
+    public ArrayList<Order> GetFilledOrders()
     {
-        
+        return fullfilledOrders;
     }
     
-    public void CompleteOrder()
+    public void AddOrder(Order neworder)
     {
-        
+        pendingOrders.add(neworder);
+    }
+    
+    public void CompleteOrder(int completedOrder)
+    {
+        fullfilledOrders.add(pendingOrders.get(completedOrder));
+        pendingOrders.remove(completedOrder);
     }
 }

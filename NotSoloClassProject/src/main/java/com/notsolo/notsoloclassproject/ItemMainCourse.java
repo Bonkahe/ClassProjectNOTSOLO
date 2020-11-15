@@ -25,7 +25,7 @@ public class ItemMainCourse implements Item{
     
     @Override
     public String toString() { 
-        return ("Main Course:" + title + "\nDescription:" + description + "\nPrice per order: $" + price + "\nDish adds " + calories + " calories.");
+        return ("\nMain Course:" + title + "\nDescription:" + description + "\nPrice per order: $" + price + "\nDish adds " + calories + " calories.");
     } 
 
     @Override
