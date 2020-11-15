@@ -5,6 +5,10 @@
  */
 package com.notsolo.notsoloclassproject;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Scanner;
+
 /**
  *
  * @author Bonkahe
@@ -13,24 +17,46 @@ public class EntryHandler {
     
     public static void main(String[] args)
     {
-        /*
+        Scanner scanner = new Scanner(System.in);
         DatabaseManager currentInstance = DatabaseManager.getInstance();
-        System.out.println(currentInstance.teststring);
-        currentInstance.teststring = "New test";
-        System.out.println(currentInstance.teststring);
-        currentInstance.teststring = "Second New test";
         
-        EmployeeMenuHandler test = new EmployeeMenuHandler();
-        test.RunTest();
-        */
+        Path currentRelativePath = Paths.get("");
+        String s = currentRelativePath.toAbsolutePath().toString();
+        currentInstance.curDirectoryPath = (s + "\\database.data");
+        currentInstance.CheckDatabaseIntegrity();
+        boolean loop = true;
+        while(loop)
+        {            
+            System.out.println("Would you like to check into a room(1) or login to admin control panel(2), or to exit the program(3)?");
+            while (!scanner.hasNextInt()){
+                scanner.nextLine();
+                System.out.println("Please enter a valid option (1 or 2)");
+            }
+            int choice = scanner.nextInt();
+            if (choice > 0 && choice < 4)
+            {
+                switch (choice) {
+                    case 1:
+                        CustomerCheckin();
+                        break;
+                    case 2:
+                        EmployeeLogin();
+                        break;
+                    default:
+                        System.out.println("Thank you for using our program.");
+                        loop = false;
+                        break;
+                }
+            }
+        }
     }
     
-    private void CustomerCheckin()
+    private static void CustomerCheckin()
     {
         
     }
     
-    private void EmployeeLogin()
+    private static void EmployeeLogin()
     {
         
     }

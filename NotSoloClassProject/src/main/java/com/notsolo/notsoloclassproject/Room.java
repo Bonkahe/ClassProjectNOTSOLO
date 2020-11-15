@@ -12,11 +12,9 @@ import java.io.Serializable;
  *
  * @author Bonkahe
  */
-public class Room implements Serializable {
+public class Room {
     
-    //default serialVersion id
-    private static final long serialVersionUID = 1L;
-    
+    public boolean occupied;
     public List<Order> orders;
     
     public Receipt GetReciept()
