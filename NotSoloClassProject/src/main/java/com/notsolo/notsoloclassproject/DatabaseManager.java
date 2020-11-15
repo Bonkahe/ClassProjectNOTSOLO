@@ -57,18 +57,9 @@ public class DatabaseManager {
         }
         int count = scanner.nextInt();
         currentData.currentRooms = new Room[count];
+        CreateMenu();
         
         SaveDatabase(currentData);
-    }
-
-    private void CreateMenu()
-    {
-
-    }
-
-    private void FillRooms()
-    {
-
     }
 
     /**
@@ -76,6 +67,20 @@ public class DatabaseManager {
      * @return List current room list.
      */
     public Room[] GetRooms(){ return currentData.currentRooms; }
+    
+    /**
+     * Get first room listed with given reservation name.
+     * @param reservationName name to search for.
+     * @return int room id of found room, 0 if not found.
+     */
+    public int GetReservedRoom(String reservationName)
+    {
+        for (int i = 0; i < currentData.currentRooms.length; i++)
+        {
+            if (currentData.currentRooms[i].reservationName.equals(reservationName)){ return i;}
+        }        
+        return 0;
+    }
 
     /**
      * Gets list of current Menu Items.
@@ -101,10 +106,24 @@ public class DatabaseManager {
 
     /**
      * Will Fill the room with the users data.
+     * @param roomId The room id to fill.
+     * @param reservationName the name to fill the room under.
      */
-    public void MakeRoomFilled(){}
+    public void FillRoom(int roomId, String reservationName){
+        if (currentData.currentRooms[roomId].occupied)
+        {
+            System.out.println("Returned: Room occupied.");
+        }
+        else
+        {
+            currentData.currentRooms[roomId].occupied = true;
+            currentData.currentRooms[roomId].reservationName = reservationName;
+        }
+    }
    
-   
+    /**
+     * Outputs the given object to the curDirectoryPath.
+     */
     private void SaveDatabase(Object serObj) {
         try {
             FileOutputStream fileOut = new FileOutputStream(curDirectoryPath);
@@ -117,6 +136,9 @@ public class DatabaseManager {
         }
     }
     
+    /**
+     * Imports the object from the curDirectoryPath.
+     */
     private Object LoadDatabase(){
         try { 
             FileInputStream fileIn = new FileInputStream(curDirectoryPath);
@@ -132,6 +154,14 @@ public class DatabaseManager {
             ex.printStackTrace();
             return null;
         }
+    }
+    
+    /**
+     * Handles generation of menu items.
+     */
+    private void CreateMenu()
+    {
+        
     }
    
    

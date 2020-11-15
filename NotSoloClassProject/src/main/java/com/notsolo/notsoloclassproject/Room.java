@@ -15,6 +15,7 @@ import java.io.Serializable;
 public class Room {
     
     public boolean occupied;
+    public String reservationName;
     public List<Order> orders;
     
     public Receipt GetReciept()

@@ -24,6 +24,8 @@ public class EntryHandler {
         String s = currentRelativePath.toAbsolutePath().toString();
         currentInstance.curDirectoryPath = (s + "\\database.data");
         currentInstance.CheckDatabaseIntegrity();
+        
+        
         boolean loop = true;
         while(loop)
         {            
