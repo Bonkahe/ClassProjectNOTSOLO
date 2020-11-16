@@ -18,6 +18,5 @@ public class DataContainer implements Serializable {
     public Room[] currentRooms;
     public Item[] currentMenu;
     
-    public String employeeLogin;
     public String employeePassword;
 }

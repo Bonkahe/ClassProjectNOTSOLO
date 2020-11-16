@@ -5,11 +5,14 @@
  */
 package com.notsolo.notsoloclassproject;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Bonkahe
  */
-public class ItemSideDish implements Item{
+public class ItemSideDish implements Item, Serializable {
+    private static final long serialVersionUID = 1338L;
     private String title;
     private String description;
     private double price;

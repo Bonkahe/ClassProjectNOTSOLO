@@ -5,14 +5,15 @@
  */
 package com.notsolo.notsoloclassproject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author Bonkahe
  */
-public class Room {
-    
+public class Room implements Serializable{
+    private static final long serialVersionUID = 1341L;
     public boolean occupied;
     public String reservationName;
     private ArrayList<Order> pendingOrders;

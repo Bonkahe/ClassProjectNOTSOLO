@@ -9,6 +9,6 @@ package com.notsolo.notsoloclassproject;
  *
  * @author Bonkahe
  */
-public interface Item {
+public interface Item  {
     public double GetPrice();
 }

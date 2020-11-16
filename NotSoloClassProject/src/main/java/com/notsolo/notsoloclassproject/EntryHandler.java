@@ -32,7 +32,7 @@ public class EntryHandler {
             System.out.println("Would you like to check into a room(1) or login to admin control panel(2), or to exit the program(3)?");
             while (!scanner.hasNextInt()){
                 scanner.nextLine();
-                System.out.println("Please enter a valid option (1 or 2)");
+                System.out.println("Please enter a valid option (1 2 or 3)");
             }
             int choice = scanner.nextInt();
             if (choice > 0 && choice < 4)
@@ -53,6 +53,10 @@ public class EntryHandler {
         }
     }
     
+    /**
+     * Using the database manager singleton it will search to see if the room exists, if it does then it enters it.
+     * If it does not exist it allows the user to create a new one, or back out to main menu.
+     */
     private static void CustomerCheckin()
     {
         Scanner scanner = new Scanner(System.in);
@@ -82,6 +86,10 @@ public class EntryHandler {
         }
     }
     
+    /**
+     * Cycles through the rooms to find an empty one and place the user in it.
+     * @param reservationName The name the individual entered earlier, used to denote this room reservation.
+     */
     private static void CreateNewReservation(String reservationName)
     {
         DatabaseManager currentInstance = DatabaseManager.getInstance();
@@ -97,8 +105,23 @@ public class EntryHandler {
         }
     }
     
+    /**
+     * Takes username and password to allow entry to employee admin menu.
+     */
     private static void EmployeeLogin()
     {
-        
+        Scanner scanner = new Scanner(System.in);
+        DatabaseManager currentInstance = DatabaseManager.getInstance();
+        System.out.println("Please input your admin password.");
+        String password = scanner.nextLine();
+        if (currentInstance.GetCredentials(password))
+        {
+            EmployeeMenuHandler newAdminPanel = new EmployeeMenuHandler();
+            newAdminPanel.InRoute();
+        }
+        else
+        {
+            System.out.println("Incorrect admin password entered.");
+        }
     }
 }

@@ -8,6 +8,7 @@ package com.notsolo.notsoloclassproject;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.*; 
@@ -47,9 +48,7 @@ public class DatabaseManager {
     private void InitializeDatabase()
     {
         currentData = new DataContainer();
-        Scanner scanner = new Scanner(System.in); 
-        System.out.println("Please enter an admin username:");
-        currentData.employeeLogin = scanner.nextLine();
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Please enter an admin password:");
         currentData.employeePassword = scanner.nextLine();
         System.out.println("Please enter how many rooms your facility has:");
@@ -64,6 +63,13 @@ public class DatabaseManager {
         
         SaveDatabase(currentData);
     }
+    
+    /**
+     * Checks if the given password matches the one in the database.
+     * @param inputPassword the password attempt to verify.
+     * @return true if it is correct, false if the password given is incorrect.
+     */
+    public boolean GetCredentials(String inputPassword){ return currentData.employeePassword.equals(inputPassword); }
 
     /**
      * Should get the list of current rooms.
@@ -107,6 +113,7 @@ public class DatabaseManager {
      * Remove the current occupant of the given room.
      * 
      * @param roomId The room id to be retrieved, to get a list of all current rooms use GetRooms() method.
+     * @return The receipt containing all delevered orders to this room, as well as the total owed.
      */
     public Receipt LeaveRoom(int roomId)
     { 
@@ -165,8 +172,7 @@ public class DatabaseManager {
             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
             objectOut.writeObject(serObj);
             objectOut.close();
-            //System.out.println("The Object  was succesfully written to a file");
-        } catch (Exception ex) {
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
@@ -177,15 +183,12 @@ public class DatabaseManager {
     private Object LoadDatabase(){
         try { 
             FileInputStream fileIn = new FileInputStream(curDirectoryPath);
-            ObjectInputStream objectIn = new ObjectInputStream(fileIn);
- 
-            Object obj = objectIn.readObject();
- 
-            //System.out.println("The Object has been read from the file");
+            ObjectInputStream objectIn = new ObjectInputStream(fileIn); 
+            Object obj = objectIn.readObject(); 
             objectIn.close();
             return obj;
  
-        } catch (Exception ex) {
+        } catch (IOException | ClassNotFoundException ex) {
             ex.printStackTrace();
             return null;
         }
