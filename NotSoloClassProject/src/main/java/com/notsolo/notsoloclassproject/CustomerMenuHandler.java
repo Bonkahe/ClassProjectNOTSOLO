@@ -56,7 +56,8 @@ public class CustomerMenuHandler {
         }
     }
     private static void GetMenu(){
-        
+        DatabaseManager currentInstance = DatabaseManager.getInstance();
+        Item[] item = currentInstance.GetMenu();
     }
     private static void PlaceOrder(){
         
