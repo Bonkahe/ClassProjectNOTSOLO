@@ -59,6 +59,10 @@ public class DatabaseManager {
         }
         int count = scanner.nextInt();
         currentData.currentRooms = new Room[count];
+        for (int i = 0; i < count; i++)
+        {
+            currentData.currentRooms[i] = new Room();
+        }
         CreateMenu();
         
         SaveDatabase(currentData);
