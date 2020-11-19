@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Bonkahe
+ * @author Amanda
  */
 public class CustomerMenuHandler {
     private int roomId;
@@ -16,7 +16,9 @@ public class CustomerMenuHandler {
     {
         this.roomId = roomId;
     }
-    
+    /**
+     * Called to begin the in customer menu loop, when returned will come back to the main menu.
+     */
     public void InRoute()
     {
         Scanner scanner = new Scanner(System.in);
@@ -69,9 +71,10 @@ public class CustomerMenuHandler {
             }
         }
     }
+    /**
+     * Gets the menu and prints using a loop
+     */
     private void GetMenu(){
-        //get the menu
-        //print the menu using while loop
         DatabaseManager currentInstance = DatabaseManager.getInstance();
         Item[] item = currentInstance.GetMenu();
         
@@ -79,10 +82,10 @@ public class CustomerMenuHandler {
             System.out.println("Item #" + i + ": " + item[i].toString());
         }
     }
+    /**
+     * Takes user input to place an order as long as it is on the menu
+     */
     private void PlaceOrder(){
-        //take order as long as its from menu
-        //send to addorder
-        //add to receipt
         GetMenu();
         DatabaseManager currentInstance = DatabaseManager.getInstance();
         System.out.println("Select an option from the menu.");
@@ -121,21 +124,27 @@ public class CustomerMenuHandler {
             }
         }
     }
+    /**
+     * Prints all orders for a specific room
+     */
     private void SeeOrders(){
-        //print all orders
         DatabaseManager currentInstance = DatabaseManager.getInstance();
         Room[] rooms = currentInstance.GetRooms();
             System.out.println(rooms[roomId].toString());
     }
+    /**
+     * Gets receipt then prints
+     */
     private void GetReceipt(){
-        //get receipt
-        //print receipt
         DatabaseManager currentInstance = DatabaseManager.getInstance();
         Room[] rooms = currentInstance.GetRooms();
         Receipt receipt = rooms[roomId].GetReciept();
         receipt.toString();
         System.out.println(receipt);
     }
+    /**
+     * Gets final receipt then prints, closes out the room
+     */
     private void CashOut(){
         //print final receipt
         //leave room
