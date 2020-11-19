@@ -22,12 +22,12 @@ public class CustomerMenuHandler {
         Scanner scanner = new Scanner(System.in);
         boolean loop = true;
         while(loop) {
-            System.out.println("Would you like to:"+"\n"+"(1)Get menu"+"\n"+"(2)Place an Order"+"\n"+"(3)Remove an Order"+"\n"+"(4)See Orders"+"\n"+"(5)Get Reciept"+"\n"+"(6)Cash Out"+"\n"+"(7)Log out temporarily");
+            System.out.println("Would you like to:"+"\n"+"(1)Get menu"+"\n"+"(2)Place an Order"+"\n"+"(3)See Orders"+"\n"+"(4)Get Reciept"+"\n"+"(5)Cash Out"+"\n"+"(6)Log out temporarily");
             int choice = scanner.nextInt();
             while(!scanner.hasNextInt()){
                 System.out.println("Please enter a whole number.");
             }
-            if(choice > 0 && choice < 7){
+            if(choice > 0 && choice < 6){
                 switch(choice){
                     case 1:
                         GetMenu();
@@ -36,15 +36,12 @@ public class CustomerMenuHandler {
                         PlaceOrder();
                         break;
                     case 3:
-                        RemoveOrder();
-                        break;
-                    case 4:
                         SeeOrders();
                         break;
-                    case 5:
+                    case 4:
                         GetReceipt();
                         break;
-                    case 6:
+                    case 5:
                         CashOut();
                         loop = false;
                         break;
@@ -74,19 +71,19 @@ public class CustomerMenuHandler {
     private void PlaceOrder(){
         GetMenu();
         DatabaseManager currentInstance = DatabaseManager.getInstance();
-        System.out.println("Select an option, or 0 to return to main menu.");
+        System.out.println("Select an option from the menu.");
         Item[] item = currentInstance.GetMenu();
 
         Scanner scanner = new Scanner(System.in);
-        int choice = scanner.nextInt();
+        //int choice = scanner.nextInt();
         boolean loop = true;
         while(loop) {    
             while (!scanner.hasNextInt()){
                 scanner.nextLine();
                 System.out.println("Please enter a number.");
             }
-            //int choice = scanner.nextInt();
-            if(choice >= 0 && choice < item.length){
+            int choice = scanner.nextInt();
+            if(choice > 0 && choice < item.length){
                 Order temp = new Order();
                 temp.currentItem = item[choice];
                 temp.quantity = 1;
@@ -94,17 +91,13 @@ public class CustomerMenuHandler {
             }
             else                
             {
-                System.out.println("Incorrect selection.");
+                System.out.println("Please select from the menu.");
             }
         }
         
         //take order as long as its from menu
         //send to addorder
         //add to receipt
-    }
-    private void RemoveOrder(){
-        //take as long as its been added to order already
-        //remove from orders
     }
     private void SeeOrders(){
         //print all orders
@@ -124,5 +117,7 @@ public class CustomerMenuHandler {
     private void CashOut(){
         //pay bill
         //leave room
+        DatabaseManager currentInstance = DatabaseManager.getInstance();
+        Room[] rooms = currentInstance.GetRooms();
     }
 }
