@@ -28,7 +28,7 @@ public class CustomerMenuHandler {
                 System.out.println("Please enter a whole number.");
             }
             int choice = scanner.nextInt();
-            if(choice > 0 && choice < 6){
+            if(choice > 0 && choice < 7){
                 switch(choice){
                     case 1:
                         GetMenu();
@@ -54,7 +54,7 @@ public class CustomerMenuHandler {
             }
             else
             {
-                System.out.println("Please enter a valid option (1 through 7).");
+                System.out.println("Please enter a valid option (1 through 6).");
             }
         }
         scanner.close();
