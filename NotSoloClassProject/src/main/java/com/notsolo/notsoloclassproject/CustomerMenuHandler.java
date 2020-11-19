@@ -62,14 +62,14 @@ public class CustomerMenuHandler {
         scanner.close();
     }
     private void GetMenu(){
+        //get the menu
+        //print the menu using while loop
         DatabaseManager currentInstance = DatabaseManager.getInstance();
         Item[] item = currentInstance.GetMenu();
         
-        for (int i = 0; i < item.length; i++) {
+        for (int i = 1; i < item.length; i++) {
             System.out.println("Item #" + i + ": " + item[i].toString());
         }
-        //get the menu
-        //print the menu using while loop
     }
     private void PlaceOrder(){
         GetMenu();
@@ -78,13 +78,14 @@ public class CustomerMenuHandler {
         Item[] item = currentInstance.GetMenu();
 
         Scanner scanner = new Scanner(System.in);
+        int choice = scanner.nextInt();
         boolean loop = true;
         while(loop) {    
             while (!scanner.hasNextInt()){
                 scanner.nextLine();
                 System.out.println("Please enter a number.");
             }
-            int choice = scanner.nextInt();
+            //int choice = scanner.nextInt();
             if(choice >= 0 && choice < item.length){
                 Order temp = new Order();
                 temp.currentItem = item[choice];
