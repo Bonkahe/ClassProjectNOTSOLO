@@ -89,6 +89,7 @@ public class CustomerMenuHandler {
                 temp.currentItem = item[choice];
                 temp.quantity = 1;
                 currentInstance.AddOrder(temp, roomId);
+                loop = false;
             }
             else                
             {
