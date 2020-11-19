@@ -203,7 +203,7 @@ public class EmployeeMenuHandler {
                     {
                         currentInstance.CompleteOrder(currentActiveOrders.get(choice), currentActiveOrders.get(choice).roomid);
                     }
-                    loop = false;
+                    return;
                 }
                 else                
                 {

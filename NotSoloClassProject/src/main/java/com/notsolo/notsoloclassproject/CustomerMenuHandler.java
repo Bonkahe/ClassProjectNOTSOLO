@@ -58,7 +58,7 @@ public class CustomerMenuHandler {
                     case 5:
                         CashOut();
                         loop = false;
-                        break;
+                        return;
                     default:
                         System.out.println("Thank you for using our program");
                         loop = false;
