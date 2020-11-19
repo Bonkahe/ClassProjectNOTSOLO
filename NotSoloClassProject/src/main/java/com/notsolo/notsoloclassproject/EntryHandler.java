@@ -7,6 +7,7 @@ package com.notsolo.notsoloclassproject;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -24,7 +25,6 @@ public class EntryHandler {
         String s = currentRelativePath.toAbsolutePath().toString();
         currentInstance.curDirectoryPath = (s + "\\database.data");
         currentInstance.CheckDatabaseIntegrity();
-        
         
         boolean loop = true;
         while(loop)
@@ -51,6 +51,7 @@ public class EntryHandler {
                 }
             }
         }
+        scanner.close();
     }
     
     /**
@@ -84,6 +85,7 @@ public class EntryHandler {
             CustomerMenuHandler returnCustomer = new CustomerMenuHandler(roomId);
             returnCustomer.InRoute();
         }
+        scanner.close();
     }
     
     /**

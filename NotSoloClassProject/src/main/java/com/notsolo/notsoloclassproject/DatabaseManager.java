@@ -62,6 +62,7 @@ public class DatabaseManager {
         for (int i = 0; i < count; i++)
         {
             currentData.currentRooms[i] = new Room();
+            currentData.currentRooms[i].roomid = i;
         }
         CreateMenu();
         
@@ -117,7 +118,7 @@ public class DatabaseManager {
      * Remove the current occupant of the given room.
      * 
      * @param roomId The room id to be retrieved, to get a list of all current rooms use GetRooms() method.
-     * @return The receipt containing all delevered orders to this room, as well as the total owed.
+     * @return The receipt containing all delievered orders to this room, as well as the total owed.
      */
     public Receipt LeaveRoom(int roomId)
     { 
@@ -161,7 +162,7 @@ public class DatabaseManager {
      * @param completedOrder order id to complete.
      * @param roomId The room id to add an order.
      */
-    public void CompleteOrder(int completedOrder, int roomId)
+    public void CompleteOrder(Order completedOrder, int roomId)
     {
         currentData.currentRooms[roomId].CompleteOrder(completedOrder);
         SaveDatabase(currentData);

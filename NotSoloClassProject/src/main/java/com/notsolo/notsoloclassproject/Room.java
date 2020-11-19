@@ -14,10 +14,11 @@ import java.util.ArrayList;
  */
 public class Room implements Serializable{
     private static final long serialVersionUID = 1341L;
+    public int roomid;
     public boolean occupied;
     public String reservationName;
-    private ArrayList<Order> pendingOrders;
-    private ArrayList<Order> fullfilledOrders;
+    public ArrayList<Order> pendingOrders;
+    public ArrayList<Order> fullfilledOrders;
 
     public Room() {
         this.pendingOrders = new ArrayList<>();
@@ -48,12 +49,38 @@ public class Room implements Serializable{
     
     public void AddOrder(Order neworder)
     {
+        neworder.roomid = roomid;
         pendingOrders.add(neworder);
     }
     
-    public void CompleteOrder(int completedOrder)
+    public void CompleteOrder(Order completedOrder)
     {
-        fullfilledOrders.add(pendingOrders.get(completedOrder));
+        fullfilledOrders.add(completedOrder);
         pendingOrders.remove(completedOrder);
     }
+    
+    @Override
+    public String toString() { 
+        String returnstring = "";
+        if (occupied)
+        {
+            returnstring += "Room #" + roomid + " is occupied under " + reservationName + ".\n"; 
+            returnstring += "Information:\n";
+            returnstring += pendingOrders.size() + " Pending orders.\n";
+            for (int j = 0; j < pendingOrders.size(); j++)
+            {
+                returnstring += pendingOrders.get(j).toString();
+            }
+            returnstring += fullfilledOrders.size() + " Pending orders.\n";
+            for (int j = 0; j < fullfilledOrders.size(); j++)
+            {
+                returnstring += fullfilledOrders.get(j).toString();
+            }
+        }
+        else
+        {
+            returnstring += "Room #" + roomid + " is unoccupied.\n";
+        }
+        return returnstring;
+    } 
 }

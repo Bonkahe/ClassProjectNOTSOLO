@@ -54,6 +54,7 @@ public class CustomerMenuHandler {
                 }
             }
         }
+        scanner.close();
     }
     private static void GetMenu(){
         DatabaseManager currentInstance = DatabaseManager.getInstance();

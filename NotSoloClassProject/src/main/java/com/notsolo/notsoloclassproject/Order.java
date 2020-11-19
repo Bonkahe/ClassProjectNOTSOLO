@@ -12,4 +12,14 @@ package com.notsolo.notsoloclassproject;
 public class Order {
     public Item currentItem;
     public int quantity;
+    public int roomid;
+    
+    @Override
+    public String toString() { 
+        String returnstring = "";
+        returnstring += currentItem.toString();
+        returnstring += "Quantity: " + quantity + "\n";
+        
+        return returnstring;
+    } 
 }
