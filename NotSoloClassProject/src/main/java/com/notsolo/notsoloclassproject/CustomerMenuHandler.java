@@ -70,13 +70,15 @@ public class CustomerMenuHandler {
         }
     }
     private void PlaceOrder(){
+        //take order as long as its from menu
+        //send to addorder
+        //add to receipt
         GetMenu();
         DatabaseManager currentInstance = DatabaseManager.getInstance();
         System.out.println("Select an option from the menu.");
         Item[] item = currentInstance.GetMenu();
 
         Scanner scanner = new Scanner(System.in);
-        //int choice = scanner.nextInt();
         boolean loop = true;
         while(loop) {    
             while (!scanner.hasNextInt()){
@@ -96,30 +98,30 @@ public class CustomerMenuHandler {
                 System.out.println("Please select from the menu.");
             }
         }
-        
-        //take order as long as its from menu
-        //send to addorder
-        //add to receipt
     }
     private void SeeOrders(){
         //print all orders
         DatabaseManager currentInstance = DatabaseManager.getInstance();
         Room[] rooms = currentInstance.GetRooms();
-        rooms[roomId].toString();
+            System.out.println(rooms[roomId].toString());
     }
     private void GetReceipt(){
         //get receipt
         //print receipt
-        //getroomreceipt()
         DatabaseManager currentInstance = DatabaseManager.getInstance();
         Room[] rooms = currentInstance.GetRooms();
         Receipt receipt = rooms[roomId].GetReciept();
         receipt.toString();
+        System.out.println(receipt);
     }
     private void CashOut(){
-        //pay bill
+        //print final receipt
         //leave room
         DatabaseManager currentInstance = DatabaseManager.getInstance();
         Room[] rooms = currentInstance.GetRooms();
+        Receipt receipt = rooms[roomId].GetReciept();
+        receipt.toString();
+        System.out.println(receipt);
+        currentInstance.LeaveRoom(roomId);
     }
 }
