@@ -73,7 +73,7 @@ public class Room implements Serializable{
             {
                 returnstring += pendingOrders.get(j).toString();
             }
-            returnstring += fullfilledOrders.size() + " Pending orders.\n";
+            returnstring += fullfilledOrders.size() + " Complete orders.\n";
             for (int j = 0; j < fullfilledOrders.size(); j++)
             {
                 returnstring += fullfilledOrders.get(j).toString();

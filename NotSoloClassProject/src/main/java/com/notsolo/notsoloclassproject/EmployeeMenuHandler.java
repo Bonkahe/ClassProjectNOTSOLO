@@ -162,7 +162,7 @@ public class EmployeeMenuHandler {
         ArrayList<Order> currentActiveOrders = DisplayOrders();
         if (currentActiveOrders.size() > 0)
         {
-            System.out.println("Select an option, or 0 to return to main menu.");
+            System.out.println("Select an option, or -1 to return to main menu.");
             
             Scanner scanner = new Scanner(System.in);
             boolean loop = true;
@@ -172,8 +172,8 @@ public class EmployeeMenuHandler {
                     System.out.println("Please enter a number.");
                 }
                 int choice = scanner.nextInt();
-                if(choice >= 0 && choice < currentActiveOrders.size() + 1){
-                    if (choice == 0)
+                if(choice >= -1 && choice < currentActiveOrders.size()){
+                    if (choice == -1)
                     {
                         System.out.println("Returning...");
                     }
@@ -213,7 +213,7 @@ public class EmployeeMenuHandler {
         {
             for(int i = 0; i < activeOrders.size(); i++)
             {
-                System.out.println("Order #" + i + 1 + "\nContents: " + activeOrders.get(i).toString());
+                System.out.println("Order #" + i + "\nContents: " + activeOrders.get(i).toString());
             }
         }
         else
@@ -245,7 +245,7 @@ public class EmployeeMenuHandler {
     private void RemoveReservation()
     {
         Room[] currooms = DisplayRooms();
-        System.out.println("Which room would you like to check out?");
+        System.out.println("Which room would you like to check out? (type -1 to back out)");
         
         Scanner scanner = new Scanner(System.in);
         boolean loop = true;
@@ -255,10 +255,15 @@ public class EmployeeMenuHandler {
                 System.out.println("Please enter a number.");
             }
             int choice = scanner.nextInt();
-            if(choice > 0 && choice < currooms.length){
+            if(choice >= -1 && choice < currooms.length){
+                if (choice == -1)
+                {
+                    return;
+                }
+                
                 if (currooms[choice].occupied)
                 {
-                    System.out.println("Room #" + choice + " removed, Receipt:\n");
+                    System.out.println("Room #" + choice + " removed,\n Receipt:\n");
                     System.out.println(currentInstance.LeaveRoom(choice));
                 }
                 else

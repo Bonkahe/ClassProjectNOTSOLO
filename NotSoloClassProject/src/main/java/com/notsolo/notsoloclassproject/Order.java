@@ -20,7 +20,7 @@ public class Order implements Serializable{
     @Override
     public String toString() { 
         String returnstring = "";
-        returnstring += currentItem.toString();
+        returnstring += currentItem.toString() + "\n";
         returnstring += "Quantity: " + quantity + "\n";
         
         return returnstring;
