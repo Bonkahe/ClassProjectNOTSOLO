@@ -15,14 +15,11 @@ import java.util.Scanner;
  */
 public class EmployeeMenuHandler {
     
-    /*
-    public void RunTest()
-    {
-        DatabaseManager currentInstance = DatabaseManager.getInstance();
-        System.out.println(currentInstance.teststring);
-    }
-    */
     DatabaseManager currentInstance;
+    
+    /**
+     * Called to begin the in employee menu loop, when returned will come back to the main menu.
+     */
     public void InRoute()
     {
         currentInstance = DatabaseManager.getInstance();
@@ -57,6 +54,9 @@ public class EmployeeMenuHandler {
         }
     }
     
+    /**
+     * Handles the management of more important database options.
+     */
     private void DatabaseManager()
     {
         Scanner scanner = new Scanner(System.in);
@@ -87,6 +87,9 @@ public class EmployeeMenuHandler {
         }
     }
     
+    /**
+     * Takes input from user and changes the password, so long as they know the current one.
+     */
     private void ChangePassword()
     {
         System.out.println("Please enter your current password:");
@@ -107,6 +110,10 @@ public class EmployeeMenuHandler {
         }
     }
     
+    /**
+     * Handles more day to day operation, specifically filling orders, printing off reciepts etc, 
+     * when returning it will come back to the employee menu enroute.
+     */
     private void OrderManager()
     {
         Scanner scanner = new Scanner(System.in);
@@ -146,6 +153,10 @@ public class EmployeeMenuHandler {
         }
     }
     
+    /**
+     * Handles fullfilling an order, it displays the menu, then requests the user to input a selection
+     * to complete.
+     */
     private void FullfillOrder()
     {
         ArrayList<Order> currentActiveOrders = DisplayOrders();
@@ -180,6 +191,11 @@ public class EmployeeMenuHandler {
         }
     }
     
+    /**
+     * multi purpose display orders function, will display every active order 
+     * that needs to be filled.
+     * @return Returns the current order list, usefull to have at times.
+     */
     private ArrayList<Order> DisplayOrders()
     {
         Room[] rooms = currentInstance.GetRooms();
@@ -207,18 +223,28 @@ public class EmployeeMenuHandler {
         
         return activeOrders;
     }
-    
-    private void DisplayRooms()
+    /**
+     * more or less the same as the display orders function but a little less
+     * complicated, and handles rooms instead.
+     * @return The current array of rooms.
+     */
+    private Room[] DisplayRooms()
     {
         Room[] rooms = currentInstance.GetRooms();
         for (int i = 0; i < rooms.length; i++) {
             System.out.println(rooms[i].toString());
         }
+        return rooms;
     }    
     
+    /**
+     * Handles removing a room from the database, allows the user to select
+     * from a list of all the rooms, and then removes them printing out the
+     * receipt for the room.
+     */
     private void RemoveReservation()
     {
-        DisplayRooms();
+        Room[] currooms = DisplayRooms();
         System.out.println("Which room would you like to check out?");
         
         Scanner scanner = new Scanner(System.in);
@@ -229,8 +255,8 @@ public class EmployeeMenuHandler {
                 System.out.println("Please enter a number.");
             }
             int choice = scanner.nextInt();
-            if(choice > 0 && choice < currentInstance.GetRooms().length){
-                if (currentInstance.GetRooms()[choice].occupied)
+            if(choice > 0 && choice < currooms.length){
+                if (currooms[choice].occupied)
                 {
                     System.out.println("Room #" + choice + " removed, Receipt:\n");
                     System.out.println(currentInstance.LeaveRoom(choice));
@@ -247,14 +273,4 @@ public class EmployeeMenuHandler {
             }
         }
     }
-    
-    private void Test()
-    {
-        Item[] test = currentInstance.GetMenu();
-        
-        for (Item test1 : test) {
-            System.out.println(test1.toString());
-        }
-        
-    }    
 }
