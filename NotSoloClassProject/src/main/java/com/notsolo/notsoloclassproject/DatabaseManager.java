@@ -137,7 +137,7 @@ public class DatabaseManager {
      * Remove the current occupant of the given room.
      * 
      * @param roomId The room id to be retrieved, to get a list of all current rooms use GetRooms() method.
-     * @return The receipt containing all delievered orders to this room, as well as the total owed.
+     * @return The receipt containing all delivered orders to this room, as well as the total owed.
      */
     public Receipt LeaveRoom(int roomId)
     { 

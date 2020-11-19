@@ -165,7 +165,7 @@ public class EmployeeMenuHandler {
     }
     
     /**
-     * Handles fullfilling an order, it displays the menu, then requests the user to input a selection
+     * Handles full filling an order, it displays the menu, then requests the user to input a selection
      * to complete.
      */
     private void FullfillOrder()
