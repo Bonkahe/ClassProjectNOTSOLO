@@ -23,10 +23,11 @@ public class CustomerMenuHandler {
         boolean loop = true;
         while(loop) {
             System.out.println("Would you like to:"+"\n"+"(1)Get menu"+"\n"+"(2)Place an Order"+"\n"+"(3)See Orders"+"\n"+"(4)Get Reciept"+"\n"+"(5)Cash Out"+"\n"+"(6)Log out temporarily");
-            int choice = scanner.nextInt();
+            
             while(!scanner.hasNextInt()){
                 System.out.println("Please enter a whole number.");
             }
+            int choice = scanner.nextInt();
             if(choice > 0 && choice < 6){
                 switch(choice){
                     case 1:
