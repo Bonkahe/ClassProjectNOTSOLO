@@ -49,7 +49,7 @@ public class CustomerMenuHandler {
                     default:
                         System.out.println("Thank you for using our program");
                         loop = false;
-                        break;
+                        return;
                 }
             }
             else
