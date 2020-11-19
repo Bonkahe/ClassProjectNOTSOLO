@@ -42,7 +42,7 @@ public class CustomerMenuHandler {
                         SeeOrders();
                         break;
                     case 5:
-                        GetReciept();
+                        GetReceipt();
                         break;
                     case 6:
                         CashOut();
@@ -59,20 +59,28 @@ public class CustomerMenuHandler {
     private static void GetMenu(){
         DatabaseManager currentInstance = DatabaseManager.getInstance();
         Item[] item = currentInstance.GetMenu();
+        //get the menu
+        //print the menu using while loop
     }
     private static void PlaceOrder(){
-        
+        //take order as long as its from menu
+        //send to addorder
+        //add to receipt
     }
     private static void RemoveOrder(){
-        
+        //take as long as its been added to order already
+        //remove from orders
     }
     private static void SeeOrders(){
-        
+        //print all orders
     }
-    private static void GetReciept(){
-        
+    private static void GetReceipt(){
+        //get receipt
+        //print receipt
+        //getroomreceipt()
     }
     private static void CashOut(){
-        
+        //pay bill
+        //leave room
     }
 }
