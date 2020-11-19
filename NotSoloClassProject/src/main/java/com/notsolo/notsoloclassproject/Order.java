@@ -5,11 +5,14 @@
  */
 package com.notsolo.notsoloclassproject;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Bonkahe
  */
-public class Order {
+public class Order implements Serializable{
+    private static final long serialVersionUID = 1340L;
     public Item currentItem;
     public int quantity;
     public int roomid;
