@@ -71,9 +71,15 @@ public class EntryHandler {
         if(roomId == -1)
         {
             System.out.println("No reservation, would you like to enter an empty room?");
-            do {
+            boolean loop = true;
+            while (loop){
+                System.out.println("Please enter yes or no.");
                 input = scanner.nextLine();
-            } while(!"yes".equals(input.toLowerCase()) || !"y".equals(input.toLowerCase()) || !"no".equals(input.toLowerCase()) || !"n".equals(input.toLowerCase()) );
+                if ("yes".equals(input.toLowerCase()) || "y".equals(input.toLowerCase()) || "no".equals(input.toLowerCase()) || "n".equals(input.toLowerCase()) )
+                {
+                    loop = false;
+                }
+            } 
             
             if (input.toLowerCase().equals("yes") || input.toLowerCase().equals("y"))
             {

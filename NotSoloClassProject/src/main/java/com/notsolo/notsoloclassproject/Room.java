@@ -22,6 +22,7 @@ public class Room implements Serializable{
 
     public Room(int roomid) {
         this.roomid = roomid;
+        this.occupied = false;
         this.pendingOrders = new ArrayList<>();
         this.fullfilledOrders = new ArrayList<>();
     }

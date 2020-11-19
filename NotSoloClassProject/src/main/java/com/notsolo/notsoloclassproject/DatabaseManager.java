@@ -96,9 +96,12 @@ public class DatabaseManager {
     {
         for (int i = 0; i < currentData.currentRooms.length; i++)
         {
-            if (currentData.currentRooms[i].reservationName.equals(reservationName))
-            { 
-                return i;
+            if (currentData.currentRooms[i].occupied)
+            {
+                if (currentData.currentRooms[i].reservationName.equals(reservationName))
+                { 
+                    return i;
+                }
             }
         }        
         return -1;
