@@ -53,11 +53,22 @@ public class DatabaseManager {
         currentData.employeePassword = scanner.nextLine();
         System.out.println("Please enter how many rooms your facility has:");
        
-        while (!scanner.hasNextInt()){
-            scanner.nextLine();  // throw away the bad input
-            System.out.println("Please enter a valid number");
+        int count = 0;
+        boolean inputcheck = true;
+        while(inputcheck)
+        {
+            if (scanner.hasNextInt())
+            {
+                count = scanner.nextInt();
+                inputcheck = false;
+            }
+            else
+            {
+                scanner.nextLine();
+                System.out.println("Please enter an integer.");
+            }
         }
-        int count = scanner.nextInt();
+            
         currentData.currentRooms = new Room[count];
         for (int i = 0; i < count; i++)
         {

@@ -120,11 +120,22 @@ public class EmployeeMenuHandler {
         boolean loop = true;
         while(loop) {            
             System.out.println("Display Orders(1), Fullfill Order(2), Display Rooms(3), Remove Room Reservation(4), Return to Admin Menu(0)");
-            while (!scanner.hasNextInt()){
-                scanner.nextLine();
-                System.out.println("Please enter a number.");
+            int choice = 0;
+            boolean inputcheck = true;
+            while(inputcheck)
+            {
+                if (scanner.hasNextInt())
+                {
+                    choice = scanner.nextInt();
+                    inputcheck = false;
+                }
+                else
+                {
+                    scanner.nextLine();
+                    System.out.println("Please enter an integer.");
+                }
             }
-            int choice = scanner.nextInt();
+            
             if(choice >= 0 && choice < 5){
                 switch(choice){
                     case 0:
@@ -167,11 +178,22 @@ public class EmployeeMenuHandler {
             Scanner scanner = new Scanner(System.in);
             boolean loop = true;
             while(loop) {    
-                while (!scanner.hasNextInt()){
-                    scanner.nextLine();
-                    System.out.println("Please enter a number.");
+                int choice = 0;
+                boolean inputcheck = true;
+                while(inputcheck)
+                {
+                    if (scanner.hasNextInt())
+                    {
+                        choice = scanner.nextInt();
+                        inputcheck = false;
+                    }
+                    else
+                    {
+                        scanner.nextLine();
+                        System.out.println("Please enter an integer.");
+                    }
                 }
-                int choice = scanner.nextInt();
+            
                 if(choice >= -1 && choice < currentActiveOrders.size()){
                     if (choice == -1)
                     {

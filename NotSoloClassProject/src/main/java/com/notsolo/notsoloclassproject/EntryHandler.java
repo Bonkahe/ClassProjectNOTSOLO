@@ -30,11 +30,22 @@ public class EntryHandler {
         while(loop)
         {            
             System.out.println("Would you like to check into a room(1) or login to admin control panel(2), or to exit the program(3)?");
-            while (!scanner.hasNextInt()){
-                scanner.nextLine();
-                System.out.println("Please enter a valid option (1 2 or 3)");
+            int choice = 0;
+            boolean inputcheck = true;
+            while(inputcheck)
+            {
+                if (scanner.hasNextInt())
+                {
+                    choice = scanner.nextInt();
+                    inputcheck = false;
+                }
+                else
+                {
+                    scanner.nextLine();
+                    System.out.println("Please enter an integer.");
+                }
             }
-            int choice = scanner.nextInt();
+            
             if (choice > 0 && choice < 4)
             {
                 switch (choice) {
@@ -91,7 +102,6 @@ public class EntryHandler {
             CustomerMenuHandler returnCustomer = new CustomerMenuHandler(roomId);
             returnCustomer.InRoute();
         }
-        scanner.close();
     }
     
     /**

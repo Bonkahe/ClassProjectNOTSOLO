@@ -23,11 +23,22 @@ public class CustomerMenuHandler {
         boolean loop = true;
         while(loop) {
             System.out.println("Would you like to:"+"\n"+"(1)Get menu"+"\n"+"(2)Place an Order"+"\n"+"(3)See Orders"+"\n"+"(4)Get Reciept"+"\n"+"(5)Cash Out"+"\n"+"(6)Log out temporarily");
-            
-            while(!scanner.hasNextInt()){
-                System.out.println("Please enter a whole number.");
+            int choice = 0;
+            boolean inputcheck = true;
+            while(inputcheck)
+            {
+                if (scanner.hasNextInt())
+                {
+                    choice = scanner.nextInt();
+                    inputcheck = false;
+                }
+                else
+                {
+                    scanner.nextLine();
+                    System.out.println("Please enter an integer.");
+                }
             }
-            int choice = scanner.nextInt();
+            
             if(choice > 0 && choice < 7){
                 switch(choice){
                     case 1:
@@ -57,7 +68,6 @@ public class CustomerMenuHandler {
                 System.out.println("Please enter a valid option (1 through 6).");
             }
         }
-        scanner.close();
     }
     private void GetMenu(){
         //get the menu
@@ -81,11 +91,23 @@ public class CustomerMenuHandler {
         Scanner scanner = new Scanner(System.in);
         boolean loop = true;
         while(loop) {    
-            while (!scanner.hasNextInt()){
-                scanner.nextLine();
-                System.out.println("Please enter a number.");
+            int choice = 0;
+            boolean inputcheck = true;
+            System.out.println("Select an option.");
+            while(inputcheck)
+            {
+                if (scanner.hasNextInt())
+                {
+                    choice = scanner.nextInt();
+                    inputcheck = false;
+                }
+                else
+                {
+                    scanner.nextLine();
+                    System.out.println("Please enter an integer.");
+                }
             }
-            int choice = scanner.nextInt();
+            
             if(choice > 0 && choice < item.length){
                 Order temp = new Order();
                 temp.currentItem = item[choice];
