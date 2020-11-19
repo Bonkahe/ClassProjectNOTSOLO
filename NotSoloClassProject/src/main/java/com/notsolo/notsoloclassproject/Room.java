@@ -20,7 +20,8 @@ public class Room implements Serializable{
     public ArrayList<Order> pendingOrders;
     public ArrayList<Order> fullfilledOrders;
 
-    public Room() {
+    public Room(int roomid) {
+        this.roomid = roomid;
         this.pendingOrders = new ArrayList<>();
         this.fullfilledOrders = new ArrayList<>();
     }
@@ -79,7 +80,7 @@ public class Room implements Serializable{
         }
         else
         {
-            returnstring += "Room #" + roomid + " is unoccupied.\n";
+            returnstring += "Room #" + roomid + " is unoccupied.";
         }
         return returnstring;
     } 

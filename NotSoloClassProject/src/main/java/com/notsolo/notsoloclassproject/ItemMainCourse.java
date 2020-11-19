@@ -28,7 +28,7 @@ public class ItemMainCourse implements Item, Serializable{
     
     @Override
     public String toString() { 
-        return ("\nMain Course:" + title + "\nDescription:" + description + "\nPrice per order: $" + price + "\nDish adds " + calories + " calories.");
+        return ("Main Course:" + title + "\nDescription:" + description + "\nPrice per order: $" + price + "\nDish adds " + calories + " calories.\n");
     } 
 
     @Override

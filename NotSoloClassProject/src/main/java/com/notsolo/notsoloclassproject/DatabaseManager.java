@@ -61,8 +61,7 @@ public class DatabaseManager {
         currentData.currentRooms = new Room[count];
         for (int i = 0; i < count; i++)
         {
-            currentData.currentRooms[i] = new Room();
-            currentData.currentRooms[i].roomid = i;
+            currentData.currentRooms[i] = new Room(i);
         }
         CreateMenu();
         

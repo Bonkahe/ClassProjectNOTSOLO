@@ -29,14 +29,17 @@ public class EmployeeMenuHandler {
         Scanner scanner = new Scanner(System.in);
         boolean loop = true;
         while(loop) {            
-            System.out.println("Would you like the manage customer orders(1), manage the database(2), or change database settings(3)? Type 4 to exit.");
+            System.out.println("Manage Customer Orders(1), Manage the Database(2), change Database Settings(3), Exit(0)");
             while (!scanner.hasNextInt()){
                 scanner.nextLine();
                 System.out.println("Please enter a number.");
             }
             int choice = scanner.nextInt();
-            if(choice > 0 && choice < 5){
+            if(choice >= 0 && choice < 4){
                 switch(choice){
+                    case 0:
+                        System.out.println("Returning to main menu...");
+                        return;
                     case 1:
                         OrderManager();
                         break;
@@ -46,9 +49,7 @@ public class EmployeeMenuHandler {
                     case 3:
                         Test();
                         break;
-                    default:
-                        System.out.println("Returning to main menu...");
-                        loop = false;
+                    default:                        
                         break;
                 }
             }
@@ -59,19 +60,65 @@ public class EmployeeMenuHandler {
         }
     }
     
-    private void OrderManager()
+    private void DatabaseManager()
     {
         Scanner scanner = new Scanner(System.in);
         boolean loop = true;
         while(loop) {            
-            System.out.println("Display Orders(1), Fullfill Order(2), Display Rooms(3), Remove Room Reservation(4), Return to Admin Menu(5)");
+            System.out.println("Change admin password(1), Delete databasefile(2), Return to Admin Menu(0)");
             while (!scanner.hasNextInt()){
                 scanner.nextLine();
                 System.out.println("Please enter a number.");
             }
             int choice = scanner.nextInt();
-            if(choice > 0 && choice < 6){
+            if(choice >= 0 && choice < 3){
                 switch(choice){
+                    case 0:
+                        System.out.println("Returning to admin menu...");
+                        return;
+                    case 1:
+                        DisplayOrders();
+                        break;
+                    case 2:
+                        FullfillOrder();
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else                
+            {
+                System.out.println("Incorrect selection.");
+            }
+        }
+    }
+    
+    private void ChangePassword()
+    {
+        
+    }
+    
+    private void DeleteDatabase()
+    {
+        
+    }
+    
+    private void OrderManager()
+    {
+        Scanner scanner = new Scanner(System.in);
+        boolean loop = true;
+        while(loop) {            
+            System.out.println("Display Orders(1), Fullfill Order(2), Display Rooms(3), Remove Room Reservation(4), Return to Admin Menu(0)");
+            while (!scanner.hasNextInt()){
+                scanner.nextLine();
+                System.out.println("Please enter a number.");
+            }
+            int choice = scanner.nextInt();
+            if(choice >= 0 && choice < 5){
+                switch(choice){
+                    case 0:
+                        System.out.println("Returning to admin menu...");
+                        return;
                     case 1:
                         DisplayOrders();
                         break;
@@ -82,11 +129,9 @@ public class EmployeeMenuHandler {
                         DisplayRooms();
                         break;
                     case 4:
-                        //RemoveReservation();
+                        RemoveReservation();
                         break;
                     default:
-                        System.out.println("Returning to admin menu...");
-                        loop = false;
                         break;
                 }
             }
@@ -162,10 +207,42 @@ public class EmployeeMenuHandler {
     private void DisplayRooms()
     {
         Room[] rooms = currentInstance.GetRooms();
-        for (Room room : rooms) {
-            System.out.println(room.toString());
+        for (int i = 0; i < rooms.length; i++) {
+            System.out.println(rooms[i].toString());
         }
     }    
+    
+    private void RemoveReservation()
+    {
+        DisplayRooms();
+        System.out.println("Which room would you like to check out?");
+        
+        Scanner scanner = new Scanner(System.in);
+        boolean loop = true;
+        while(loop) {        
+            while (!scanner.hasNextInt()){
+                scanner.nextLine();
+                System.out.println("Please enter a number.");
+            }
+            int choice = scanner.nextInt();
+            if(choice > 0 && choice < currentInstance.GetRooms().length){
+                if (currentInstance.GetRooms()[choice].occupied)
+                {
+                    System.out.println("Room #" + choice + " removed, Receipt:\n");
+                    System.out.println(currentInstance.LeaveRoom(choice));
+                }
+                else
+                {
+                    System.out.println("Room #" + choice + " is unoccupied.");
+                }
+                loop = false;
+            }
+            else                
+            {
+                System.out.println("Incorrect selection.");
+            }
+        }
+    }
     
     private void Test()
     {
@@ -174,5 +251,6 @@ public class EmployeeMenuHandler {
         for (Item test1 : test) {
             System.out.println(test1.toString());
         }
+        
     }    
 }
