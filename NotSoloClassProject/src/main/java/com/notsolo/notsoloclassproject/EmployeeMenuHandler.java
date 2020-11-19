@@ -29,13 +29,13 @@ public class EmployeeMenuHandler {
         Scanner scanner = new Scanner(System.in);
         boolean loop = true;
         while(loop) {            
-            System.out.println("Manage Customer Orders(1), Manage the Database(2), change Database Settings(3), Exit(0)");
+            System.out.println("Manage Customer Orders(1), Manage the Database(2), Exit(0)");
             while (!scanner.hasNextInt()){
                 scanner.nextLine();
                 System.out.println("Please enter a number.");
             }
             int choice = scanner.nextInt();
-            if(choice >= 0 && choice < 4){
+            if(choice >= 0 && choice < 3){
                 switch(choice){
                     case 0:
                         System.out.println("Returning to main menu...");
@@ -44,10 +44,7 @@ public class EmployeeMenuHandler {
                         OrderManager();
                         break;
                     case 2:
-                        Test();
-                        break;
-                    case 3:
-                        Test();
+                        DatabaseManager();
                         break;
                     default:                        
                         break;
@@ -65,22 +62,19 @@ public class EmployeeMenuHandler {
         Scanner scanner = new Scanner(System.in);
         boolean loop = true;
         while(loop) {            
-            System.out.println("Change admin password(1), Delete databasefile(2), Return to Admin Menu(0)");
+            System.out.println("Change admin password(1), Return to Admin Menu(0)");
             while (!scanner.hasNextInt()){
                 scanner.nextLine();
                 System.out.println("Please enter a number.");
             }
             int choice = scanner.nextInt();
-            if(choice >= 0 && choice < 3){
+            if(choice >= 0 && choice < 2){
                 switch(choice){
                     case 0:
                         System.out.println("Returning to admin menu...");
                         return;
                     case 1:
-                        DisplayOrders();
-                        break;
-                    case 2:
-                        FullfillOrder();
+                        ChangePassword();
                         break;
                     default:
                         break;
@@ -95,12 +89,22 @@ public class EmployeeMenuHandler {
     
     private void ChangePassword()
     {
+        System.out.println("Please enter your current password:");
+        Scanner scanner = new Scanner(System.in);
         
-    }
-    
-    private void DeleteDatabase()
-    {
-        
+        String input = scanner.nextLine();
+        if (currentInstance.GetCredentials(input))
+        {
+            System.out.println("Please enter your new password:");
+            input = scanner.nextLine();
+            currentInstance.SetCredentials(input);
+            
+            System.out.println("Password changed to " + input + ", returning...");
+        }
+        else
+        {
+            System.out.println("Incorrect password, returning...");
+        }
     }
     
     private void OrderManager()

@@ -74,6 +74,12 @@ public class DatabaseManager {
      * @return true if it is correct, false if the password given is incorrect.
      */
     public boolean GetCredentials(String inputPassword){ return currentData.employeePassword.equals(inputPassword); }
+    
+    public void SetCredentials(String inputPassword)
+    {
+        currentData.employeePassword = inputPassword;
+        SaveDatabase(currentData);
+    }
 
     /**
      * Should get the list of current rooms.
