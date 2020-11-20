@@ -34,6 +34,7 @@ public class Room implements Serializable{
     
     public void ClearRoom()
     {
+        occupied = false;
         reservationName = "";
         pendingOrders.clear();
         fullfilledOrders.clear();

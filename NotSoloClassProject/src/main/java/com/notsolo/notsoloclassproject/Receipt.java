@@ -39,7 +39,7 @@ public class Receipt {
         for(int i = 0; i < orders.size(); i++)
         {
             output = output + "\nItem #" + i + " details:";
-            output = output + "\n" + orders.get(i).currentItem.toString();
+            output = output +  orders.get(i).currentItem.toString();
         }
         output = output + "\nTotal:$" + GetTotal();
         

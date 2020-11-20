@@ -75,7 +75,16 @@ public class EntryHandler {
         DatabaseManager currentInstance = DatabaseManager.getInstance();
         System.out.println("Please input your reservation name:");
         String input = scanner.nextLine();
-        String reservationName = input;
+        
+        if (input.trim().isEmpty())
+        {
+            System.out.println("Please enter a non whitespace name.");
+            return;
+        }
+        
+        input = input.trim();
+        
+        String reservationname = input;
         
         int roomId = currentInstance.GetReservedRoom(input);
         
@@ -94,7 +103,7 @@ public class EntryHandler {
             
             if (input.toLowerCase().equals("yes") || input.toLowerCase().equals("y"))
             {
-                CreateNewReservation(reservationName);
+                CreateNewReservation(reservationname);
             }
         }
         else
@@ -114,11 +123,13 @@ public class EntryHandler {
         Room[] rooms = currentInstance.GetRooms();
         for (int i = 0; i < rooms.length; i++)
         {
+            System.out.println(i + " - " + rooms[i].occupied);
             if (!rooms[i].occupied)
             {
                 CustomerMenuHandler returnCustomer = new CustomerMenuHandler(i);
                 currentInstance.FillRoom(i, reservationName);
                 returnCustomer.InRoute();
+                return;
             }
         }
     }

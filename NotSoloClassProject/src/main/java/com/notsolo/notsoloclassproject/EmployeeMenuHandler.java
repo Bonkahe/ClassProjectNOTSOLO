@@ -285,8 +285,11 @@ public class EmployeeMenuHandler {
                 
                 if (currooms[choice].occupied)
                 {
-                    System.out.println("Room #" + choice + " removed,\n Receipt:\n");
-                    System.out.println(currentInstance.LeaveRoom(choice));
+                    System.out.println("Room #" + choice + " removed,\nReceipt:\n");
+                    Receipt receipt = currooms[choice].GetReciept();
+                    receipt.toString();
+                    System.out.println(receipt);
+                    currentInstance.LeaveRoom(choice);
                 }
                 else
                 {
