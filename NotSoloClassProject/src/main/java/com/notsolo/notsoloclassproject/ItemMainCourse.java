@@ -35,4 +35,9 @@ public class ItemMainCourse implements Item, Serializable{
     public double GetPrice() {
         return price;
     }
+
+    @Override
+    public String GetReceipt() {
+        return (title + ": $" + price);
+    }
 }

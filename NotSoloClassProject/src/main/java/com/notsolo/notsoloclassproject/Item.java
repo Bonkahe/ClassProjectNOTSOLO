@@ -11,4 +11,5 @@ package com.notsolo.notsoloclassproject;
  */
 public interface Item  {
     public double GetPrice();
+    public String GetReceipt();
 }

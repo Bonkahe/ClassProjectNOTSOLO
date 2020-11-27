@@ -38,8 +38,8 @@ public class Receipt {
         String output = "Bill recipient:" + reservationName + "\nItems Ordered:";
         for(int i = 0; i < orders.size(); i++)
         {
-            output = output + "\nItem #" + i + " details:";
-            output = output +  orders.get(i).currentItem.toString();
+            output = output + "\nItem #" + i + " details:" + orders.get(i).currentItem.GetReceipt();
+            //output = output +  orders.get(i).currentItem.toString();
         }
         output = output + "\nTotal:$" + GetTotal();
         

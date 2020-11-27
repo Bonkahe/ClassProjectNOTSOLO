@@ -123,7 +123,6 @@ public class EntryHandler {
         Room[] rooms = currentInstance.GetRooms();
         for (int i = 0; i < rooms.length; i++)
         {
-            System.out.println(i + " - " + rooms[i].occupied);
             if (!rooms[i].occupied)
             {
                 CustomerMenuHandler returnCustomer = new CustomerMenuHandler(i);
